@@ -2,3 +2,54 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: lightgrey;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.display {
+  background-color: black;
+  color: white;
+  font-size: 50px;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.buttons {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+}
+
+#clear,
+#total {
+  flex: 1;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+}
+
+.operators {
+  display: flex;
+  flex-direction: column;
+}
