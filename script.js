@@ -36,10 +36,18 @@ const operate = (num1, num2, operator) => {
 };
 
 const display = document.querySelector('.display');
+const populate = (value) => {
+  if (display.innerText == '00') {
+    display.innerText ='';
+  };
+  if (display.innerText.length <= 10) {
+    display.innerText += value;
+  }
+
+};
+
 
 const nums = Array.from(document.querySelectorAll('.num'));
 nums.forEach(element => {
-  element.addEventListener('click', ev => {
-    display.innerText += ev.target.innerText;
-  })
+  element.addEventListener('click', ev => populate(ev.target.innerText));
 });

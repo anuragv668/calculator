@@ -5,6 +5,7 @@
 
 body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -27,7 +28,7 @@ body {
 .display {
   background-color: black;
   color: white;
-  font-size: 40px;
+  font-size: 30px;
   height: 100px;
   display: flex;
   justify-content: flex-end;
