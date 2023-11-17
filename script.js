@@ -34,3 +34,12 @@ const operate = (num1, num2, operator) => {
       break;
   }
 };
+
+const display = document.querySelector('.display');
+
+const nums = Array.from(document.querySelectorAll('.num'));
+nums.forEach(element => {
+  element.addEventListener('click', ev => {
+    display.innerText += ev.target.innerText;
+  })
+});
