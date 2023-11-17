@@ -14,9 +14,9 @@ const divide = (a, b) => {
   return a / b;
 };
 
-let num1;
-let num2;
-let operator;
+let num1 = '';
+let num2 = '';
+let operator = '';
 
 const operate = (num1, num2, operator) => {
   switch (operator) {
@@ -40,9 +40,10 @@ const populate = (value) => {
   if (display.innerText == '00') {
     display.innerText ='';
   };
-  if (display.innerText.length <= 10) {
-    display.innerText += value;
+  if (num1.length <= 10) {
+    num1 += value;
   }
+  display.innerText = `${num1}${operator}${num2}`;
 
 };
 
