@@ -36,15 +36,10 @@ const operate = (num1, num2, operator) => {
 };
 
 const display = document.querySelector('.display');
+let storeExpression = '';
 const populate = (value) => {
-  if (display.innerText == '00') {
-    display.innerText ='';
-  };
-  if (num1.length <= 10) {
-    num1 += value;
-  }
-  display.innerText = `${num1}${operator}${num2}`;
-
+  storeExpression += value;
+  display.innerText = `${storeExpression}`;
 };
 
 
@@ -52,3 +47,21 @@ const nums = Array.from(document.querySelectorAll('.num'));
 nums.forEach(element => {
   element.addEventListener('click', ev => populate(ev.target.innerText));
 });
+
+const operators = Array.from(document.querySelectorAll('.operator'));
+operators.forEach(element => {
+  element.addEventListener('click', ev => {
+    if (operator == '') {
+      operator = ev.target.innerText;
+      num1 = storeExpression;
+      populate(ev.target.innerText)
+    }
+  });
+});
+
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+  storeExpression = '';
+  display.innerText = '00';
+});
+
