@@ -26,10 +26,13 @@ const operate = (num1, num2, operator) => {
     case '-':
       return subtract(num1, num2);
       break;
-    case '*':
+    case 'x':
       return multiply(num1, num2);
       break;
     case '/':
+      if (num2 == 0) {
+        return 'ERROR';
+      }
       return divide(num1, num2);
       break;
   }
@@ -62,6 +65,20 @@ operators.forEach(element => {
 const clear = document.getElementById('clear');
 clear.addEventListener('click', () => {
   storeExpression = '';
+  operator = '';
+  num1 = '';
+  num2 = '';
   display.innerText = '00';
+});
+
+
+const total = document.getElementById('total');
+total.addEventListener('click', () => {
+  if (operator) {
+    num2 = storeExpression.slice(storeExpression.indexOf(operator) + 1);
+    storeExpression = '';
+    populate(operate(+num1, +num2, operator));
+    operator = '';
+  }
 });
 
