@@ -11,6 +11,10 @@ const multiply = (a, b) => {
 };
 
 const divide = (a, b) => {
+  let lengthTest = '' + (a / b);
+  if (lengthTest.length > 8) {
+    return (a / b).toFixed(1);
+  }
   return a / b;
 };
 
@@ -45,23 +49,6 @@ const populate = (value) => {
   display.innerText = `${storeExpression}`;
 };
 
-
-const nums = Array.from(document.querySelectorAll('.num'));
-nums.forEach(element => {
-  element.addEventListener('click', ev => populate(ev.target.innerText));
-});
-
-const operators = Array.from(document.querySelectorAll('.operator'));
-operators.forEach(element => {
-  element.addEventListener('click', ev => {
-    if (operator == '') {
-      operator = ev.target.innerText;
-      num1 = storeExpression;
-      populate(ev.target.innerText)
-    }
-  });
-});
-
 const clear = document.getElementById('clear');
 clear.addEventListener('click', () => {
   storeExpression = '';
@@ -72,13 +59,42 @@ clear.addEventListener('click', () => {
 });
 
 
+const nums = Array.from(document.querySelectorAll('.num'));
+nums.forEach(element => {
+  element.addEventListener('click', ev => populate(ev.target.innerText));
+});
+
+const operators = Array.from(document.querySelectorAll('.operator'));
+operators.forEach(element => {
+  element.addEventListener('click', ev => {
+    if (operator == '') {
+      populate(ev.target.innerText);
+      operator = ev.target.innerText;
+    } else {
+      evaluate();
+      populate(ev.target.innerText);
+    }
+  });
+});
+
+const evaluate = () => {
+  const oindex = storeExpression.indexOf(operator);
+  if (oindex !== -1) {  
+    num1 = storeExpression.slice(0, storeExpression.indexOf(operator));
+    num2 = storeExpression.slice(storeExpression.indexOf(operator) + 1);
+    if (num1 != '' && num2 != '') { 
+      storeExpression = '';
+      populate(operate(+num1, +num2, operator));
+    }
+  }
+}
+
+
 const total = document.getElementById('total');
 total.addEventListener('click', () => {
-  if (operator) {
-    num2 = storeExpression.slice(storeExpression.indexOf(operator) + 1);
-    storeExpression = '';
-    populate(operate(+num1, +num2, operator));
-    operator = '';
-  }
+  evaluate();
+  num1 = '';
+  num2 = '';
+  operator = '';
 });
 
