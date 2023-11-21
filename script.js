@@ -70,6 +70,10 @@ operators.forEach(element => {
     if (operator == '') {
       populate(ev.target.innerText);
       operator = ev.target.innerText;
+    } else if (storeExpression.slice(-1) == '+' || storeExpression.slice(-1) == '-' || storeExpression.slice(-1) == 'x' || storeExpression.slice(-1) == '/') {
+      storeExpression = storeExpression.slice(0, -1);
+      populate(ev.target.innerText);
+      operator = ev.target.innerText;
     } else {
       evaluate();
       populate(ev.target.innerText);
