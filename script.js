@@ -81,17 +81,6 @@ operators.forEach(element => {
   });
 });
 
-// const evaluate = () => {
-//   const oindex = storeExpression.indexOf(operator);
-//   if (oindex !== -1) {  
-//     num1 = storeExpression.slice(0, storeExpression.indexOf(operator));
-//     num2 = storeExpression.slice(storeExpression.indexOf(operator) + 1);
-//     if (num1 != '' && num2 != '') { 
-//       storeExpression = '';
-//       populate(operate(+num1, +num2, operator));
-//     }
-//   }
-// }
 const evaluate = () => {
   const operators = ['+', '-', 'x', '/'];
 
